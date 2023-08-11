@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block static_index %}
+    <link rel="stylesheet" href=" {% static 'horoscope/css/index.css' %}">
+{% endblock %}
+
+{% block title %}
+    Меню
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% include 'includes/navbar.html' %}
+    {% for zodiac in zodiacs %}
+        <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}"> {{ zodiac|title }} </a> </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+</head>
+<body>
+    <h2>Информации о людях</h2>
+    {% for key in all_people %}
+        <div>
+            <h5> <b> ФИО </b> - {{ key.name|title }} </h5>
+            <p> <b> Возраст </b> - {{ key.age }} </p>
+            <p> <b> Телефон </b> - {{ key.phone}} </p>
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block css_style%}
+    <link rel="stylesheet" href=" {% static 'css/table.css' %}">
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Points</th>
+        <th>Active</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Dom</td>
+        <td>6000</td>
+        <td>False</td>
+    </tr>
+    <tr class="active-row">
+        <td>Melissa</td>
+        <td>5150</td>
+        <td>True</td>
+    </tr>
+    <tr class="active-row">
+        <td>David</td>
+        <td>4500</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>Gerard</td>
+        <td>3000</td>
+        <td>False</td>
+    </tr>
+    </tbody>
+</table>
+{% load my_filters %}
+{% for i in 10|times %}
+    <p>Hello</p>
+{% endfor %}
+
+{% for c in 3|filter_range:8 %}
+    <p>{{ c }}</p>
+{% endfor %}
+</body>
+</html>
