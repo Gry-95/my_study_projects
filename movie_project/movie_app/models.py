@@ -10,4 +10,4 @@ class Movie(models.Model):
 
 
     def __str__(self):
-        return f'{self.name} - {self.rating}%'
+        return f'{self.name} - {self.rating}% {self.year} {self.budget} '
