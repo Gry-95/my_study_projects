@@ -1,0 +1,3 @@
+install all for worked
+django-extensions
+ipython
