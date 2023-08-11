@@ -16,7 +16,3 @@ def show_one_movie(request, id_movie:int):
     return render(request, 'movie_app/one_movie.html', {
         "movie": movie
     })
-
-
-def some_func():
-    pass
