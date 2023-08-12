@@ -9,5 +9,10 @@
         <li><a href="{{ book.get_url }}">{{ book.title }}</a>, рейтинг - {{ book.rating }}, автор {{ book.author }} </li>
     {% endfor %}
   </ul>
+  <h4>Средний рейтинг - {{ agg.rating__avg }}</h4>
+  <h4>Минимальный рейтинг - {{ agg.rating__min }}</h4>
+  <h4>Максимальный рейтинг - {{ agg.rating__max }}</h4>
+  <h4>Количество книг - {{ agg.id__count }}</h4>
+
 
 {% endblock %}

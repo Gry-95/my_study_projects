@@ -18,15 +18,15 @@ def redirect(request, **kwargs):
 
 
 def get_rectangle_area(request, width, height):
-    return render(request, 'geometry/rectangle.html')
-    # return HttpResponse(f'Площадь прямоугольника размером {width}x{height} равна {width * height}')
+    # return render(request, 'geometry/rectangle.html')
+    return HttpResponse(f'Площадь прямоугольника размером {width}x{height} равна {width * height}')
 
 
 def get_square_area(request, width):
-    return render(request, 'geometry/square.html')
-    # return HttpResponse(f'Площадь квадрата размером {width}x{width} равна {width ** 2}')
+    # return render(request, 'geometry/square.html')
+    return HttpResponse(f'Площадь квадрата размером {width}x{width} равна {width ** 2}')
 
 
 def get_circle_area(request, radius):
-    return render(request, 'geometry/circle.html')
-    # return HttpResponse(f'Площадь круга радиуса {radius} равна {3.14 * radius ** 2}')
+    # return render(request, 'geometry/circle.html')
+    return HttpResponse(f'Площадь круга радиуса {radius} равна {3.14 * radius ** 2}')
