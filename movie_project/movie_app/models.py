@@ -10,6 +10,7 @@ class Movie(models.Model):
     budget = models.IntegerField(default=1000000)
     slug = models.SlugField(default='', null=False)
 
+
     def get_url(self):
         return reverse("movie-detail", args=[self.id])
 
