@@ -4,10 +4,11 @@ from django.db.models import F, Avg, Min, Max, Count, Value
 
 # Create your views here.
 def show_all_books(request):
-    # books = Book.objects.order_by(F('is_best_selling').desc())
-    books = Book.objects.annotate(
-        new_columm = F('rating') + 100,
-    )           #Отображает новые колонки в дебаг тулбаре. НЕ ВНОСИТ ИЗМЕНЕНИЯ В БД!
+    books = Book.objects.order_by(F('is_best_selling').desc()) # Соритровка по лучшим продажам
+    # books = Book.objects.annotate(
+    # new_columm = (
+    # F('rating') + 100,
+    # )           #Отображает новые колонки в дебаг тулбаре. НЕ ВНОСИТ ИЗМЕНЕНИЯ В БД!
     agg = books.aggregate(Avg('rating'), Min('rating'), Max('rating'), Count('id'))
     return render(request, 'book_app/all_books.html', {
         "books": books,

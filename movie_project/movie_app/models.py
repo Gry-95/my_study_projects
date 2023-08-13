@@ -19,4 +19,4 @@ class Movie(models.Model):
         return reverse("movie-detail", args=[self.slug])
 
     def __str__(self):
-        return f'{self.name} - {self.rating}% {self.year} {self.budget} '
+        return f'{self.name} - {self.rating}%'
