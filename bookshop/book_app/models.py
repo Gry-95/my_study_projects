@@ -5,10 +5,19 @@ from django.utils.text import slugify
 # Create your models here.
 
 class Book(models.Model):
+    EUR = 'EUR'
+    USD = 'USD'
+    RUB = 'RUB'
+    CURRENCY_CHOICES = [
+        (EUR, 'EURO'),
+        (USD, 'DOLLAR'),
+        (RUB, 'RUBLIES'),
+    ]
     title = models.CharField(max_length=70)
     rating = models.IntegerField()
     is_best_selling = models.BooleanField()
-    author = models.CharField(null=True, max_length=100)
+    author = models.CharField(null=True, max_length=100, blank=True)
+    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=RUB)
     slug = models.SlugField(default='', null=False, db_index=True)
 
     def save(self, *args, **kwargs):
