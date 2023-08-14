@@ -5,6 +5,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
+class Author(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email_author = models.EmailField()
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} {self.email_author}'
+
 
 class Book(models.Model):
     EUR = 'EUR'
@@ -20,9 +28,10 @@ class Book(models.Model):
                                              MaxValueValidator(100)]
                                  )  # Устанавливаем минимальное и маскимальное значение добавления записи в БД
     is_best_selling = models.BooleanField()
-    author = models.CharField(null=True, max_length=100, blank=True)
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=RUB)
     slug = models.SlugField(default='', null=False, db_index=True)
+    book_info = models.CharField(max_length=100, default='Неизвестно')
+    author = models.ForeignKey(Author, on_delete=models.PROTECT, null=True) #Добавляем связь многие ко многим / null=True проставляет дефолттные значения
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)

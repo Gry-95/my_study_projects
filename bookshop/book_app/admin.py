@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.db.models import QuerySet
 from django.contrib.auth.models import User
-from .models import Book
+from .models import Book, Author
 
 
 # Register your models here.
+admin.site.register(Author)
+
 class Rating_filter(admin.SimpleListFilter):
     title = 'Фильтр по рейтингу'
     parameter_name = 'rating'
@@ -30,15 +32,13 @@ class Rating_filter(admin.SimpleListFilter):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     # fields = ['title', 'rating'] #В добавление элемента в ДБ указываем поля для заполнения
-    exclude = ['slug']  # Выбираем поля которые исключим из добавления в БД
-    list_display = ['title', 'rating', 'is_best_selling', 'currency', 'author', 'slug',
+    # exclude = ['slug']  # Выбираем поля которые исключим из добавления в БД
+    list_display = ['title', 'rating', 'author', 'is_best_selling', 'currency',
                     'rating_status']  # Добавление полей в админку
-    prepopulated_fields = {
-        'slug': (
-            'name',
-        )}  # Указываем что поле slug предвычисляемое и оно будет заполняться автоматичски на основе введенного имени
-    readonly_fields = ['author']  # Выбираем поля которые пользватель не сможет редактивровать
-    list_editable = ['rating', 'currency', 'is_best_selling', 'author']  # редактирование поля
+    prepopulated_fields = {'slug': (
+        'title',)}  # Указываем что поле slug предвычисляемое и оно будет заполняться автоматичски на основе введенного имени
+    readonly_fields = ['currency']  # Выбираем поля которые пользватель не сможет редактивровать
+    list_editable = ['rating', 'author', 'currency', 'is_best_selling']  # редактирование поля
     list_per_page = 15  # Указываем сколько записей помещается на странице
     ordering = ['-rating']  # Сортировка по рейтингу
     actions = ['set_dollars', 'set_euro']  # Добавили возможность изменять валюту выбранным элементам БД
