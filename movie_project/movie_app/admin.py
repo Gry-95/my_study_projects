@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from django.db.models import QuerySet
 from django.contrib.auth.models import User
 from .models import Movie, Director, Actor
