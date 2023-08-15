@@ -1,0 +1,14 @@
+{% extends 'book_app/base.html' %}
+
+{% block title %} Список всех авторов {% endblock %}
+
+{% block content %}
+  <h2> Список всех авторов </h2>
+  <ul>
+    {% for author in authors %}
+        <li><a href="{{ author.get_url_author }}">{{ author.first_name }} - {{ author.last_name }}</a> </li>
+    {% endfor %}
+  </ul>
+
+
+{% endblock %}

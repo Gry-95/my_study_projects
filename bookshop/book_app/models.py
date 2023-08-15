@@ -5,13 +5,17 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
-class Author(models.Model):
+class BookAuthor(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_author = models.EmailField()
+    objects = models.Manager()
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} {self.email_author}'
+
+    def get_url_author(self):
+        return reverse("author-detail", args=[self.id])
 
 
 class Book(models.Model):
@@ -31,7 +35,8 @@ class Book(models.Model):
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=RUB)
     slug = models.SlugField(default='', null=False, db_index=True)
     book_info = models.CharField(max_length=100, default='Неизвестно')
-    author = models.ForeignKey(Author, on_delete=models.PROTECT, null=True) #Добавляем связь многие ко многим / null=True проставляет дефолттные значения
+    author = models.ForeignKey(BookAuthor, on_delete=models.PROTECT,
+                               null=True)  # Добавляем связь многие ко многим / null=True проставляет дефолттные значения
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)

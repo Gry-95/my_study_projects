@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.db.models import QuerySet
 from django.contrib.auth.models import User
-from .models import Book, Author
+from .models import Book, BookAuthor
 
 
 # Register your models here.
-admin.site.register(Author)
 
 class Rating_filter(admin.SimpleListFilter):
     title = 'Фильтр по рейтингу'
@@ -27,6 +26,12 @@ class Rating_filter(admin.SimpleListFilter):
         if self.value() == 'от 60 до 79':
             return queryset.filter(rating__gt=59, rating__lt=80)
         return queryset.filter(rating__gt=79)
+
+
+@admin.register(BookAuthor)
+class BookAuthorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'first_name', 'last_name', 'email_author']
+    list_editable = ['first_name', 'last_name', 'email_author']
 
 
 @admin.register(Book)
