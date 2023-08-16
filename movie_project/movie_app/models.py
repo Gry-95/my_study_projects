@@ -18,8 +18,8 @@ class Director(models.Model):
 
 
 class DressingRoom(models.Model):
-    floor = models.IntegerField(default=1)
-    number = models.IntegerField(default=2)
+    floor = models.IntegerField()
+    number = models.IntegerField()
 
     def __str__(self):
         return f'{self.floor} {self.number}'
