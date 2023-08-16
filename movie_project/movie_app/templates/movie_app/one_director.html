@@ -6,6 +6,12 @@
   <h2> Имя режисера - {{ director.first_name }} </h2>
   <h3> Фамилия режисера - {{ director.last_name }}</h3>
   <h3> e-mail режисера - {{ director.email }}</h3>
-
+  <hr>
+  <h3> Список фильмов </h3>
+  <ul>
+    {% for movie in director.movie_set.all %}
+        <li>{{ movie }}</li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}
