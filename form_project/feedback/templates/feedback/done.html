@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <H1>Ваш отзыв обработан</H1>
-</body>
-</html>
+{% extends 'feedback/base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href=" {% static 'feedback/forms.css' %}">
+{% endblock %}
+{% block title %} Отзыв готов {% endblock %}
+{% block content %}
+    <h2>Ваш отзыв успешно обработан</h2>
+    <h2>Имя - {{ name }}</h2>
+    <h2>Дата - {{ date }}</h2>
+{% endblock %}
+

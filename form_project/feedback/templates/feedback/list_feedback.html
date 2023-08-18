@@ -1,0 +1,29 @@
+{% extends 'feedback/base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'feedback/detail_feedback.css' %}">
+{% endblock %}
+
+{% block title %}
+    Все отзывы
+{% endblock %}
+
+{% block content %}
+    <h1><span class="badge badge-pill badge-primary">Список всех отзывов</span></h1>
+    <div class="container">
+        <div class="row">
+        {% for comment in comments %}
+        <h3 class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h6> id: {{comment.pk}} </h6>
+              <h5 class="card-title">{{ comment.name }} {{ comment.surname }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Оценка {{ comment.rating }}</h6>
+              <p class="card-text">{{ comment.feedback|truncatewords:4 }}</p>
+              <a href="{% url 'feedback-list' comment.id %}" class="card-link">Подробнее</a>
+            </div>
+        </h3>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'feedback/base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'feedback/detail_feedback.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ post.name }} {{ post.surname }}
+{% endblock %}
+
+{% block content %}
+<h1><span class="badge badge-pill badge-primary">Отзыв</span></h1>
+<div class="container col-lg-4">
+    <h2>{{ feedback.name }} {{ feedback.surname }}</h2>
+    <h3>{% for _ in "x"|rjust:feedback.rating %}⭐{% endfor %}</h3>
+    <div class='card'>
+        <h4>{{ feedback.feedback|linebreaksbr }}</h4>
+    </div>
+</div>
+{% endblock %}

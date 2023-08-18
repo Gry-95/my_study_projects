@@ -1,4 +1,6 @@
+from django.db.models import Count
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 from .models import Movie, Director, Actor
 
 
@@ -25,11 +27,9 @@ def all_directors(request):
     })
 
 
-def one_director(request, idt):
-    director = get_object_or_404(Director, id=idt)
-    return render(request, 'movie_app/one_director.html', {
-        'director': director
-    })
+class DetailDirector(DetailView):
+    template_name = 'movie_app/one_director.html'
+    model = Director
 
 
 def all_actors(request):
@@ -39,8 +39,13 @@ def all_actors(request):
     })
 
 
-def one_actor(request, actor_id):
-    actor = get_object_or_404(Actor, id=actor_id)
-    return render(request, 'movie_app/one_actor.html', {
-        'actor': actor
-    })
+class DetailActor(DetailView):
+    template_name = 'movie_app/one_actor.html'
+    model = Actor
+
+
+class ListMovies(ListView):
+    template_name = 'movie_app/list_movies.html'
+    model = Movie
+    context_object_name = 'directors'
+    extra_context = {'actors': Actor.objects.all()}
