@@ -1,4 +1,4 @@
-bot_token = '6418444886:AAFQzc0uUO9K8BgKIpXW6uYqN0kF5XlLBdA'
+bot_token = ':3'
 
 api_url = "http://127.0.0.1:8000"
 fake_database = {'users': [
