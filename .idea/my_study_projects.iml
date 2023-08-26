@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/table" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/form_project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/API APP" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/converter" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
